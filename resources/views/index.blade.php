@@ -23,8 +23,12 @@
                 <td>{{ $product->category_id }}</td>
                 <td>{{ $product->count }}</td>
                 <td>
-                    <a href="{{ route('products.edit', $product) }}" class="btn btn-warning">Edit</a>
-                    <a href="{{ route('products.destroy', $product) }}" class="btn btn-danger">Delete</a>
+                    <form action="{{ route('products.destroy', $product) }}" method="POST">
+                        <a href="{{ route('products.edit', $product) }}" class="btn btn-warning">Edit</a>
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger" type="submit">Delete</button>
+                    </form>
                 </td>
             </tr>
         @endforeach

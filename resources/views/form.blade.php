@@ -50,7 +50,7 @@
                 </textarea>
                 <label for="description">Description</label>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-success">Submit</button>
         </div>
             @csrf
             @if(isset($product))
