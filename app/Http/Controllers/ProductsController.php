@@ -48,11 +48,12 @@ class ProductsController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function show(Product $product)
     {
-
+        return view('show',)
+            ->with('product', $product);
     }
 
     /**
@@ -88,6 +89,6 @@ class ProductsController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        dd($product);
     }
 }

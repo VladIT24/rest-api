@@ -18,11 +18,14 @@
         @foreach($products as $product)
             <tr>
                 <th scope="row">{{ $product->id }}</th>
-                <td>{{ $product->name }}</td>
+                <td><a href="{{ route('products.show', $product) }}">{{ $product->name }}</a></td>
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->category_id }}</td>
                 <td>{{ $product->count }}</td>
-                <td><a href="{{ route('products.edit', $product) }}" class="btn btn-warning">Edit</a></td>
+                <td>
+                    <a href="{{ route('products.edit', $product) }}" class="btn btn-warning">Edit</a>
+                    <a href="{{ route('products.destroy', $product) }}" class="btn btn-danger">Delete</a>
+                </td>
             </tr>
         @endforeach
 
