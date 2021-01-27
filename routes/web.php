@@ -23,3 +23,4 @@ Route::get('/', function () {
 Route::resource('users', UsersController::class);
 Route::resource('products', ProductsController::class);
 Route::resource('categories', CategoriesController::class);
+

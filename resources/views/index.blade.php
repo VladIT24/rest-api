@@ -1,6 +1,8 @@
 @extends('layout')
 
+@section('title', 'Products list')
 @section('content')
+    <a class="btn btn-primary" href="{{ route('products.create') }}">Add a product</a>
     <table class="table">
         <thead>
         <tr>
@@ -9,6 +11,7 @@
             <th scope="col">Price</th>
             <th scope="col">Category</th>
             <th scope="col">Count</th>
+            <th scope="col">Action</th>
         </tr>
         </thead>
         <tbody>
@@ -19,6 +22,7 @@
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->category_id }}</td>
                 <td>{{ $product->count }}</td>
+                <td><a href="{{ route('products.edit', $product) }}" class="btn btn-warning">Edit</a></td>
             </tr>
         @endforeach
 

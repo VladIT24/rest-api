@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Starter Template · Bootstrap v5.0</title>
+    <title>@yield('title')</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/starter-template/">
 
-    <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
 
@@ -43,10 +43,10 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item active">
-                    <a class="nav-link" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" aria-current="page" href="{{ route('products.index') }}">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="{{ route('categories.index') }}">Categories</a>
                 </li>
 
             </ul>
@@ -55,13 +55,15 @@
 </nav>
 
 <main class="container">
-
-    <div class="starter-template text-center py-5 px-3">
+    <div class="col text-center">
+        <h1>@yield('title')</h1>
+    </div>
+    <div class="starter-template text-center py-2 px-3">
         @yield('content')
     </div>
 
 </main>
 
-<script src="https://getbootstrap.com/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+<script src="https://getbootstrap.com/docs/5.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
