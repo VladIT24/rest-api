@@ -18,7 +18,7 @@ class ProductsController extends Controller
     {
 
         $products = Product::paginate();
-        return view('index')
+        return view('products.index')
             ->with('products', $products);
     }
 
@@ -29,7 +29,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view('form');
+        return view('products.form');
     }
 
     /**
@@ -54,7 +54,7 @@ class ProductsController extends Controller
      */
     public function show(Product $product)
     {
-        return view('show',)
+        return view('products.show',)
             ->with('product', $product);
     }
 
@@ -66,7 +66,7 @@ class ProductsController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('form')
+        return view('products.form')
             ->with('product', $product);
     }
 
