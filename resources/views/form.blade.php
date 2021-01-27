@@ -2,7 +2,15 @@
 
 @section('title', isset($product)? 'Update a ' . $product->name: 'Create a product')
 @section('content')
-
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
         <form
             @if(isset($product))
                 action="{{ route('products.update', $product) }}"
@@ -14,24 +22,24 @@
             <div class="form-group mb-3">
                 <label for="name">Name:</label>
                 <input type="text" class="form-control" name="name"
-                       value="{{ isset($product)? $product->name:null }}"
+                       value="{{ old('name', isset($product)? $product->name:null) }}"
                        placeholder="Enter a name">
             </div>
             <div class="form-group mb-3">
                 <label for="price">Price:</label>
                 <input type="text" class="form-control" id="price" name="price"
-                       value="{{ isset($product)? $product->price:null }}"
+                       value="{{ old('price', isset($product)? $product->price:null) }}"
                        placeholder="Enter price">
             </div>
             <div class="form-group mb-3">
                 <label for="count">Count:</label>
                 <input type="number" min="1" class="form-control" id="count" name="count"
-                       value="{{ isset($product)? $product->count:null }}"
+                       value="{{ old('count', isset($product)? $product->count:null) }}"
                        placeholder="Enter count of product">
             </div>
             <div class="form-group mb-3">
                 <input type="text" class="form-control" name="category_id"
-                       value="{{ isset($product)? $product->category_id:null }}"
+                       value="{{ old('category_id',isset($product)? $product->category_id:null) }}"
                        placeholder="Category">
             </div>
 {{--            <div class="form-group mb-3">--}}
@@ -46,7 +54,7 @@
 {{--            </div>--}}
             <div class="form-floating mb-3">
                 <textarea class="form-control" placeholder="Leave a description here" id="description" name="description" style="height: 100px">
-                    {{ isset($product)? $product->description:null }}
+                    {{ old('description', isset($product)? $product->description:null)  }}
                 </textarea>
                 <label for="description">Description</label>
             </div>
