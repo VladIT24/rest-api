@@ -17,7 +17,7 @@ class ProductsController extends Controller
     public function index()
     {
 
-        $products = Product::all();
+        $products = Product::paginate();
         return view('index')
             ->with('products', $products);
     }
@@ -42,7 +42,8 @@ class ProductsController extends Controller
     {
         Product::create($request->except('_token'));
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')
+            ->withSuccess('Created product ' . $request->name);
     }
 
     /**
@@ -79,7 +80,8 @@ class ProductsController extends Controller
     public function update(ProductRequest $request, Product $product)
     {
         $product->update($request->except('_token'));
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')
+            ->withSuccess('Updated product ' . $product->name);
     }
 
     /**
@@ -91,6 +93,7 @@ class ProductsController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')
+            ->withDanger('Deleted product ' . $product->name);
     }
 }

@@ -55,6 +55,12 @@
 </nav>
 
 <main class="container">
+    @if(session('success'))
+        <div class="alert alert-success text-center"> {{ session('success') }} </div>
+    @elseif(session('danger'))
+        <div class="alert alert-danger text-center"> {{ session('danger') }} </div>
+    @endif
+
     <div class="col text-center">
         <h1>@yield('title')</h1>
     </div>
