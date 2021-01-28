@@ -38,20 +38,25 @@
                        placeholder="Enter count of product">
             </div>
             <div class="form-group mb-3">
-                <input type="text" class="form-control" name="category_id"
-                       value="{{ old('category_id',isset($product)? $product->category_id:null) }}"
-                       placeholder="Category">
+                <label for="category">Category:</label>
+                <select class="form-select" aria-label="Default select example" name="category_id">
+                    @if(isset($product))
+                        @foreach($product->category->all() as $category)
+                            <option
+                                {{ ($product->category->id == $category->id)? htmlspecialchars('selected'):null }}
+                                value="{{ $category->id }}" >{{ $category->name }}
+                            </option>
+                        @endforeach
+                    @else
+                        @foreach($categories as $category)
+                            <option
+                                value="{{ $category->id }}" >{{ $category->name }}
+                            </option>
+                        @endforeach
+                    @endif
+
+                </select>
             </div>
-{{--            <div class="form-group mb-3">--}}
-{{--                <label for="category">Category:</label>--}}
-{{--                <select class="form-select" aria-label="Default select example" >--}}
-{{--                    <option selected>Choose a category</option>--}}
-{{--                    <option value="3">3</option>--}}
-{{--                    @foreach($catagories as $category)--}}
-{{--                        <option value="{{ $category->id }}">{{ $category->name }}</option>--}}
-{{--                    @endforeach--}}
-{{--                </select>--}}
-{{--            </div>--}}
             <div class="form-floating mb-3">
                 <textarea class="form-control" placeholder="Leave a description here" id="description" name="description" style="height: 100px">
                     {{ old('description', isset($product)? $product->description:null)  }}

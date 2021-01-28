@@ -20,7 +20,7 @@
                 <th scope="row">{{ $product->id }}</th>
                 <td><a href="{{ route('products.show', $product) }}">{{ $product->name }}</a></td>
                 <td>{{ $product->price }}</td>
-                <td>{{ $product->category_id }}</td>
+                <td><a href="{{ route('categories.show', $product->category) }}">{{ $product->category->name }}</a></td>
                 <td>{{ $product->count }}</td>
                 <td>
                     <form action="{{ route('products.destroy', $product) }}" method="POST">
